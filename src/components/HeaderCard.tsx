@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import EnergyBar from "./EnergyBar";
+import { ReactComponent as Strava } from "../assets/strava-icon.svg";
 
 const Main = styled.div`
   width: 100%;
@@ -21,15 +21,29 @@ const SubTitle = styled.h2`
   color: #ffffff;
 `;
 
-const HeaderCard: React.FC<{ name: string; team: string }> = ({
-  name,
-  team,
-}) => {
+const Link = styled.a`
+  position: absolute;
+  text-decoration: none;
+  bottom: 20px;
+  right: 20px;
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+`;
+
+const HeaderCard: React.FC<{
+  name: string;
+  team: string;
+  stravaLink: string;
+}> = ({ name, team, stravaLink }) => {
   return (
     <Main>
       <Title>{name}</Title>
       <SubTitle>{team}</SubTitle>
-      <EnergyBar value={3} />
+      <Link href={stravaLink}>
+        <Strava />
+      </Link>
     </Main>
   );
 };

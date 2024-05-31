@@ -51,12 +51,12 @@ function App() {
 
   return (
     <Main>
-      <HeaderCard name={athlete.name} team={athlete.team} />
-      <About
-        sex={athlete.sex}
-        about={athlete.about}
+      <HeaderCard
+        name={athlete.name}
+        team={athlete.team}
         stravaLink={athlete.stravaLink}
       />
+      <About sex={athlete.sex} about={athlete.about} />
       <Rate
         sodium={athlete.sodium}
         glucose={athlete.glucose}

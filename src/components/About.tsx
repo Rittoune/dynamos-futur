@@ -4,7 +4,6 @@ import SimpleCard from "./SimpleCard";
 import { Sex } from "../App";
 import Male from "../assets/male.png";
 import Female from "../assets/female.png";
-import { ReactComponent as Strava } from "../assets/strava-icon.svg";
 
 const SimpleCardStyled = styled(SimpleCard)`
   display: flex;
@@ -39,21 +38,11 @@ const Text = styled.p`
   margin: 10px 0;
 `;
 
-const Link = styled.a`
-  position: absolute;
-  text-decoration: none;
-  bottom: 20px;
-  right: 20px;
-  svg {
-    width: 30px;
-    height: 30px;
-  }
-`;
 
-const About: React.FC<{ sex: Sex; about: string; stravaLink: string }> = ({
+
+const About: React.FC<{ sex: Sex; about: string }> = ({
   sex,
   about,
-  stravaLink,
 }) => {
   return (
     <SimpleCardStyled>
@@ -61,9 +50,9 @@ const About: React.FC<{ sex: Sex; about: string; stravaLink: string }> = ({
       <Rigth>
         <Title>À propos</Title>
         <Text>{about}</Text>
-        <Link href={stravaLink}>
+        {/* <Link href={stravaLink}>
           <Strava />
-        </Link>
+        </Link> */}
       </Rigth>
     </SimpleCardStyled>
   );
