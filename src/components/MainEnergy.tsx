@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SimpleCard from "./SimpleCard";
 import { ReactComponent as Circles } from "../assets/circles.svg";
+import Glitch from "./Glitch";
 
 const SimpleCardStyled = styled(SimpleCard)`
   display: flex;
@@ -24,15 +25,17 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 20px;
   width: 100%;
   position: relative;
+  min-height: 200px;
 
   svg {
     padding: 0px;
     overflow: visible;
     opacity: 0.4;
+    position: absolute;
   }
 
   [class^="st"] {
@@ -74,18 +77,15 @@ const Container = styled.div`
   }
 `;
 
-const Percentage = styled.span`
+const Percentage = styled(Glitch)`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  color: white;
+  color: #fcee09;
   font-size: 3em;
   font-weight: bold;
-  position: absolute;
-  top: calc(50% - 40px);
-  left: 0;
-  height: 80px;
+  margin-bottom: 0;
+  margin-left: .2em;
 `;
 
 const MainEnergy: React.FC<{
@@ -96,7 +96,7 @@ const MainEnergy: React.FC<{
       <Title>Energie Générale</Title>
       <Container>
         <Circles />
-        <Percentage>{energy}%</Percentage>
+        <Percentage text={`${energy}%`}></Percentage>
       </Container>
     </SimpleCardStyled>
   );

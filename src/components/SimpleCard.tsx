@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from "react";
+import React, { MouseEventHandler, ReactElement, ReactNode } from "react";
 import styled, { css } from "styled-components";
 
 const Main = styled.div`
@@ -52,12 +52,12 @@ const SubTitle = styled.h2`
   color: #0ee7e0;
 `;
 
-const SimpleCard: React.FC<{ children: ReactNode }> = ({
-  children,
-  ...props
-}) => {
+const SimpleCard: React.FC<{
+  children: ReactNode;
+  onClick?: MouseEventHandler<HTMLDivElement> | undefined;
+}> = ({ children, onClick, ...props }) => {
   return (
-    <Main {...props}>
+    <Main onClick={onClick} {...props}>
       <CornerTL />
       <CornerTR />
       <CornerBL />

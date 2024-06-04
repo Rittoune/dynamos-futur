@@ -15,6 +15,19 @@ const SimpleCardStyled = styled(SimpleCard)`
 
 const Image = styled.img`
   width: 25%;
+  animation: waving 10s linear infinite;
+
+  @keyframes waving {
+    0% {
+      transform: rotateY(-20deg);
+    }
+    70% {
+      transform: rotateY(+20deg);
+    }
+    100% {
+      transform: rotateY(-20deg);
+    }
+  }
 `;
 
 const Rigth = styled.div`
@@ -38,21 +51,13 @@ const Text = styled.p`
   margin: 10px 0;
 `;
 
-
-
-const About: React.FC<{ sex: Sex; about: string }> = ({
-  sex,
-  about,
-}) => {
+const About: React.FC<{ sex: Sex; about: string }> = ({ sex, about }) => {
   return (
     <SimpleCardStyled>
       {sex === "female" ? <Image src={Female} /> : <Image src={Male} />}
       <Rigth>
         <Title>À propos</Title>
         <Text>{about}</Text>
-        {/* <Link href={stravaLink}>
-          <Strava />
-        </Link> */}
       </Rigth>
     </SimpleCardStyled>
   );

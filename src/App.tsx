@@ -6,6 +6,7 @@ import About from "./components/About";
 import Rate from "./components/Rate";
 import Recommendation from "./components/Recommandations";
 import MainEnergy from "./components/MainEnergy";
+import AthleteSelector from "./components/AthleteSelector";
 
 export type Sex = "male" | "female";
 
@@ -23,20 +24,6 @@ export interface Athlete {
   stravaLink: string;
 }
 
-const mockAthlete: Athlete = {
-  name: "John Doe",
-  team: "Team A",
-  energy: 78,
-  about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  sex: "male",
-  age: 25,
-  sodium: 4,
-  glucose: 8,
-  lactate: 2,
-  recommended: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  stravaLink: "https://www.strava.com/athletes/13471750",
-};
-
 const Main = styled.div`
   width: 100vw;
   height: 100vh;
@@ -47,23 +34,25 @@ const Main = styled.div`
 `;
 
 function App() {
-  const [athlete, setAthlete] = useState<Athlete>(mockAthlete);
+  const [athlete, setAthlete] = useState<Athlete>();
 
   return (
     <Main>
-      <HeaderCard
-        name={athlete.name}
-        team={athlete.team}
-        stravaLink={athlete.stravaLink}
-      />
-      <About sex={athlete.sex} about={athlete.about} />
-      <Rate
-        sodium={athlete.sodium}
-        glucose={athlete.glucose}
-        lactate={athlete.lactate}
-      />
-      <MainEnergy energy={athlete.energy} />
-      <Recommendation recommendation={athlete.recommended} />
+      {athlete ? (
+        <>
+          <HeaderCard athlete={athlete} />
+          <About sex={athlete.sex} about={athlete.about} />
+          <Rate
+            sodium={athlete.sodium}
+            glucose={athlete.glucose}
+            lactate={athlete.lactate}
+          />
+          <MainEnergy energy={athlete.energy} />
+          <Recommendation recommendation={athlete.recommended} />
+        </>
+      ) : (
+        <AthleteSelector setAthlete={setAthlete} />
+      )}
     </Main>
   );
 }
