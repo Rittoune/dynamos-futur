@@ -1,9 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 import SimpleCard from "./SimpleCard";
-import { Athlete, Sex } from "../App";
-import Male from "../assets/male.png";
-import Female from "../assets/female.png";
+import { Athlete } from "../App";
 import Glitch from "./Glitch";
 
 const SimpleCardStyled = styled(SimpleCard)`
@@ -13,13 +11,13 @@ const SimpleCardStyled = styled(SimpleCard)`
   margin-top: 40px;
   position: relative;
   &:hover {
-    border-color: rgba(14, 231, 224, .5);
+    border-color: rgba(14, 231, 224, 0.5);
   }
 `;
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 80px);
 `;
 
 const Title = styled(Glitch)`
@@ -27,6 +25,7 @@ const Title = styled(Glitch)`
   color: #ffffff;
   margin: 20px;
   text-align: center;
+  height: 82px;
 `;
 
 const Name = styled.span`
@@ -35,8 +34,12 @@ const Name = styled.span`
   font-weight: bold;
   text-align: center;
   width: 100%;
-`
+`;
 
+const List = styled.div`
+  height: calc(100% - 82px);
+  overflow: auto;
+`;
 const mockAthletes: Athlete[] = [
   {
     name: "John",
@@ -205,11 +208,13 @@ const AthleteSelector: React.FC<{
   return (
     <Container>
       <Title text="Sélectionnez votre profil" />
-      {mockAthletes.map((a) => (
-        <SimpleCardStyled onClick={() => setAthlete(a)}>
-          <Name>{a.name}</Name>
-        </SimpleCardStyled>
-      ))}
+      <List>
+        {mockAthletes.map((a, index) => (
+          <SimpleCardStyled key={index} onClick={() => setAthlete(a)}>
+            <Name>{a.name}</Name>
+          </SimpleCardStyled>
+        ))}
+      </List>
     </Container>
   );
 };

@@ -35,7 +35,6 @@ const Cell = styled.div<{ active: boolean }>`
   height: 4vw;
   background-color: #fcee09;
   opacity: ${(props) => (props.active ? 1 : 0.3)};
-  /* transform: skew(-5deg); */
 `;
 
 const EnergyBar: React.FC<{ value: number }> = ({ value }) => {
@@ -43,7 +42,6 @@ const EnergyBar: React.FC<{ value: number }> = ({ value }) => {
 
   return (
     <Container>
-      {/* <Title>Énergie</Title> */}
       {Array.from({ length: totalCell }, (_, index) => (
         <Cell active={index <= value - 1} key={index} />
       ))}

@@ -34,7 +34,7 @@ const Container = styled.div`
   svg {
     padding: 0px;
     overflow: visible;
-    opacity: 0.4;
+    opacity: 0.41;
     position: absolute;
   }
 

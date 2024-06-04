@@ -1,27 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Strava } from "../assets/strava-icon.svg";
-import { Athlete } from "../App";
 
-const Main = styled.div`
-  width: 100%;
-  padding: 20px;
-  border: 4px solid #0ee7e0;
-  position: relative;
-  z-index: 1;
-  /* padding-bottom: 8vw; */
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Text = styled.h1<{ text: string }>`
+const Text = styled.h1<{ $text: string }>`
   font-size: 2em;
   margin-top: 0;
   position: relative;
   color: #fff;
   animation: glitch-skew 10s infinite linear alternate-reverse;
   &::before {
-    content: "${(props) => props.text}";
+    content: "${(props) => props.$text}";
     position: absolute;
     top: 0;
     left: 0;
@@ -33,7 +20,7 @@ const Text = styled.h1<{ text: string }>`
     animation: glitch-anim 2s infinite linear alternate-reverse;
   }
   &::after {
-    content: "${(props) => props.text}";
+    content: "${(props) => props.$text}";
     position: absolute;
     top: 0;
     left: 0;
@@ -247,7 +234,7 @@ const Glitch: React.FC<{
   text: string;
 }> = ({ text, ...props }) => {
   return (
-    <Text {...props} text={text}>
+    <Text {...props} $text={text}>
       {text}
     </Text>
   );

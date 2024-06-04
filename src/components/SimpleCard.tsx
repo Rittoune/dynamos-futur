@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, ReactElement, ReactNode } from "react";
+import React, { MouseEventHandler, ReactNode } from "react";
 import styled, { css } from "styled-components";
 
 const Main = styled.div`
@@ -45,11 +45,6 @@ const CornerBR = styled.div`
   right: 0;
   border-right: 4px solid #0ee7e0;
   border-bottom: 4px solid #0ee7e0;
-`;
-
-const SubTitle = styled.h2`
-  font-size: 1em;
-  color: #0ee7e0;
 `;
 
 const SimpleCard: React.FC<{

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import styled from "styled-components";
 import HeaderCard from "./components/HeaderCard";
@@ -7,6 +7,7 @@ import Rate from "./components/Rate";
 import Recommendation from "./components/Recommandations";
 import MainEnergy from "./components/MainEnergy";
 import AthleteSelector from "./components/AthleteSelector";
+import Loader from "./components/Loader";
 
 export type Sex = "male" | "female";
 
@@ -35,10 +36,25 @@ const Main = styled.div`
 
 function App() {
   const [athlete, setAthlete] = useState<Athlete>();
+  const [loader, setLoader] = useState<Boolean>(true);
+
+  useEffect(() => {
+    let timeout: string | number | NodeJS.Timeout | undefined = undefined;
+    if (athlete !== undefined) {
+      timeout = setTimeout(() => {
+        setLoader(false);
+      }, 3000);
+    }
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [athlete]);
 
   return (
     <Main>
-      {athlete ? (
+      {athlete === undefined && loader ? (
+        <AthleteSelector setAthlete={setAthlete} />
+      ) : athlete && !loader ? (
         <>
           <HeaderCard athlete={athlete} />
           <About sex={athlete.sex} about={athlete.about} />
@@ -51,7 +67,7 @@ function App() {
           <Recommendation recommendation={athlete.recommended} />
         </>
       ) : (
-        <AthleteSelector setAthlete={setAthlete} />
+        <Loader name="Test" />
       )}
     </Main>
   );

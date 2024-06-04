@@ -23,11 +23,21 @@ const Title = styled.span`
   margin-right: 40px;
 `;
 
-const Cell = styled.div<{ active: boolean }>`
+const Cell = styled.div<{ $active: boolean, $isLast: boolean }>`
   width: 2vw;
   height: 8vw;
   background-color: #0ee7e0;
-  opacity: ${(props) => (props.active ? 1 : 0.3)};
+  opacity: ${(props) => (props.$active ? 1 : 0.3)};
+ ${(props) => (props.$isLast ? 'animation: wave 2s ease-in-out infinite' : '')};
+
+ @keyframes wave {
+    0% {
+      box-shadow: 0 0 2px #0ee7e0
+    }
+    50% {
+      box-shadow: 0 0 5px #0ee7e0
+    }
+ }
 `;
 
 const RateBar: React.FC<{ name: string; value: number }> = ({
@@ -41,7 +51,7 @@ const RateBar: React.FC<{ name: string; value: number }> = ({
       <Title>{name}</Title>
       <Cells>
         {Array.from({ length: totalCell }, (_, index) => (
-          <Cell active={index <= value - 1} key={index} />
+          <Cell $active={Boolean(index <= value - 1)} $isLast={Boolean(index === value - 1)} key={index} />
         ))}
       </Cells>
     </Container>
