@@ -67,7 +67,7 @@ function App() {
           <Recommendation recommendation={athlete.recommended} />
         </>
       ) : (
-        <Loader name="Test" />
+        <Loader name={athlete?.name || "..."} />
       )}
     </Main>
   );
