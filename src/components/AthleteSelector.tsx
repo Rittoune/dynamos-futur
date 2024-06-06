@@ -82,7 +82,7 @@ const mockAthletes: Athlete[] = [
   },
 
   {
-    name: "John",
+    name: "Alan",
     team: "Team A",
     energy: 45,
     about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -95,7 +95,7 @@ const mockAthletes: Athlete[] = [
     stravaLink: "",
   },
   {
-    name: "Jeanne",
+    name: "Michael",
     team: "Team B",
     energy: 78,
     about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -108,7 +108,7 @@ const mockAthletes: Athlete[] = [
     stravaLink: "",
   },
   {
-    name: "Kris",
+    name: "Wallace",
     team: "Team A",
     energy: 89,
     about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -122,7 +122,7 @@ const mockAthletes: Athlete[] = [
   },
 
   {
-    name: "John",
+    name: "Jack",
     team: "Team A",
     energy: 45,
     about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -135,7 +135,7 @@ const mockAthletes: Athlete[] = [
     stravaLink: "",
   },
   {
-    name: "Jeanne",
+    name: "Marco",
     team: "Team B",
     energy: 78,
     about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
